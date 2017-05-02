@@ -8,6 +8,7 @@ namespace AngularJS_MVC.Controllers
     public class DataController : Controller
     {
         // GET: Data
+        //by Chandan
         public JsonResult GetSiteMenu()
         {
             StoredProcedure sp = new StoredProcedure("GetSiteMenu");
