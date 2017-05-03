@@ -1,11 +1,12 @@
-﻿@{
+﻿@model AngularJS_MVC.Models.ViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
- 
- <h3>Menu From Database </h3><br />
 
-<div ng-app="MyApp"> 
+<h3>Menu From Database using AngularJS </h3><br />
+
+<div ng-app="MyApp">
     <div ng-controller="menuController">
         @* Here first of all we will create a ng-template *@
         <script type="text/ng-template" id="treeMenu">
@@ -24,7 +25,44 @@
     </div>
 
 </div>
+<br />
+<br />
+<h2>Menu From Database using MVC</h2>
+<div>
+    <ul id="menu">
+        @foreach (var item in @Model.Menu.Items)
+        {
+            <li>
+                @Html.ActionLink(@item.LinkText, @item.ActionName,
+              @item.ControllerName)
+            </li>
+        }
+    </ul>
+</div>
+<br/>
+<br/>
+<h3>Menu From Page</h3>
+<div>
+    <ul>
 
+        <li>  @Html.ActionLink("Menu 1", "Index", "Menu 1")</li>
+        <li> @Html.ActionLink("Menu 2", "Index", "Menu 2")</li>
+        <li>
+            @Html.ActionLink("Menu 3", "Index", "Menu 3")
+            <ul>
+                <li>@Html.ActionLink("Sub Menu 1", "Index", "Sub Menu 1")</li>
+                <li>@Html.ActionLink("Sub Menu 2", "ASPPage", "Sub Menu 2")</li>
+                <li>@Html.ActionLink("Sub Menu 3", "ASPPage", "Sub Menu 3")</li>
+                <li>@Html.ActionLink("Sub Menu 4", "ASPPage", "Sub Menu 4")</li>
+            </ul>
+        </li>
+        <li>  @Html.ActionLink("Menu 5", "Index", "Menu 5")</li>
+        <li> @Html.ActionLink("Menu 6", "Index", "Menu 6")</li>
+        <li>  @Html.ActionLink("Menu 7", "Index", "Menu 7")</li>
+        <li> @Html.ActionLink("Menu 8", "Index", "Menu 8")</li>
+
+    </ul>
+</div>
 @* Add css here for nav menu *@
 <link href="~/css/navMenu.css" rel="stylesheet" />
 
